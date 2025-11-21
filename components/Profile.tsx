@@ -4,13 +4,14 @@ import { User, Language } from '../types';
 
 interface ProfileProps {
   user: User;
+  reportCount: number;
   language: Language;
   onToggleLanguage: () => void;
   onLogout: () => void;
   t: any;
 }
 
-export const Profile: React.FC<ProfileProps> = ({ user, language, onToggleLanguage, onLogout, t }) => {
+export const Profile: React.FC<ProfileProps> = ({ user, reportCount, language, onToggleLanguage, onLogout, t }) => {
   const getLanguageLabel = (lang: Language) => {
       switch(lang) {
           case 'ru': return 'Русский (RU)';
@@ -44,7 +45,7 @@ export const Profile: React.FC<ProfileProps> = ({ user, language, onToggleLangua
               <div className="text-emerald-200 text-xs">{t.profile.pointsLabel}</div>
            </div>
            <div className="bg-emerald-700/50 rounded-2xl p-3 flex-1 ml-2 backdrop-blur-sm border border-emerald-500/30">
-              <div className="text-3xl font-bold">12</div>
+              <div className="text-3xl font-bold">{reportCount}</div>
               <div className="text-emerald-200 text-xs">{t.profile.reportsLabel}</div>
            </div>
         </div>
