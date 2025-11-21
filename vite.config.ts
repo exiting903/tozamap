@@ -11,9 +11,10 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     base: './', // Makes paths relative for GitHub Pages deployment
     define: {
-      // Properly stringify the key replacement to avoid overwriting the entire process.env object
-      // This prevents "process is not defined" errors in libraries
-      'process.env.API_KEY': JSON.stringify(env.VITE_GEMINI_API_KEY)
+      // This ensures 'process.env.API_KEY' is replaced with the actual string value during build
+      'process.env.API_KEY': JSON.stringify(env.VITE_GEMINI_API_KEY),
+      // This prevents "process is not defined" error if some library tries to access process.env
+      'process.env': {} 
     }
   };
 });
