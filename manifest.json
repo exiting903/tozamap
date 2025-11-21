@@ -13,8 +13,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "./index.html",
-  "scope": ".",
+  "start_url": "/tozamap/",
+  "scope": "/tozamap/",
   "display": "standalone",
   "theme_color": "#10b981",
   "background_color": "#ffffff"
