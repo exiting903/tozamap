@@ -1,0 +1,8 @@
+{
+  "name": "TozaMap",
+  "description": "Crowdsourced environmental monitoring app for Uzbekistan. Track, report, and analyze pollution data.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
