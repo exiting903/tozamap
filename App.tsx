@@ -117,6 +117,9 @@ const App: React.FC = () => {
     });
   };
 
+  // Calculate derived state for profile
+  const userReportCount = user ? reports.filter(r => r.userId === user.id).length : 0;
+
   // If user is not logged in, show Auth screen
   if (!user) {
     return (
@@ -150,6 +153,7 @@ const App: React.FC = () => {
         {view === 'PROFILE' && (
           <Profile 
             user={user} 
+            reportCount={userReportCount}
             language={language}
             onToggleLanguage={toggleLanguage}
             t={t}
