@@ -45,10 +45,26 @@ export interface Report {
 export interface User {
   id: string;
   name: string;
-  nickname: string; // Added nickname
+  nickname: string; 
   rank: string;
   points: number;
   avatarUrl: string;
 }
 
-export type ViewState = 'AUTH' | 'MAP' | 'FEED' | 'ADD' | 'PROFILE' | 'REPORT_DETAILS';
+export enum EcoPointType {
+  RECYCLING = 'RECYCLING',
+  VOLUNTEER = 'VOLUNTEER'
+}
+
+export interface EcoPoint {
+  id: string;
+  type: EcoPointType;
+  name: string;
+  description: string;
+  location: GeoLocation;
+  workingHours?: string;
+  contact?: string;
+  acceptedItems?: string[];
+}
+
+export type ViewState = 'AUTH' | 'MAP' | 'FEED' | 'ADD' | 'PROFILE' | 'REPORT_DETAILS' | 'GUIDE';
