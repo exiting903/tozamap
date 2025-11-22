@@ -1,10 +1,11 @@
-import { PollutionCategory, Report, ReportStatus, User } from './types';
+
+import { PollutionCategory, Report, ReportStatus, User, EcoPoint, EcoPointType } from './types';
 
 export const MOCK_USER: User = {
   id: 'u1',
   name: 'Aziz Rahimov',
   nickname: 'aziz_eco',
-  rank: 'Eco-Activist', // Ranks could be dynamic, keeping simple for now
+  rank: 'Eco-Activist', 
   points: 340,
   avatarUrl: 'https://picsum.photos/id/64/200/200'
 };
@@ -19,7 +20,7 @@ export const INITIAL_REPORTS: Report[] = [
     timestamp: Date.now() - 86400000 * 2, // 2 days ago
     status: ReportStatus.NEW,
     likes: 15,
-    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ05NliFzM-Yhh5KM6goEMgA4NGGws4PN0vw&s'
+    imageUrl: 'https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'r2',
@@ -30,7 +31,7 @@ export const INITIAL_REPORTS: Report[] = [
     timestamp: Date.now() - 3600000 * 5, // 5 hours ago
     status: ReportStatus.VERIFIED,
     likes: 42,
-    imageUrl: 'https://upl.uz/uploads/posts/2021-11/1636051172_taha.jpg'
+    imageUrl: 'https://images.unsplash.com/photo-1502682219545-8084a1638295?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'r3',
@@ -41,7 +42,71 @@ export const INITIAL_REPORTS: Report[] = [
     timestamp: Date.now() - 86400000 * 5,
     status: ReportStatus.IN_PROGRESS,
     likes: 8,
-    imageUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2Fnikita.lemeshko.2025%2Fposts%2F%25D1%2583%25D0%25B7%25D0%25B1%25D0%25B5%25D0%25BA%25D0%25B8%25D1%2581%25D1%2582%25D0%25B0%25D0%25BD-%25D0%25B8-%25D0%25B5%25D0%25B3%25D0%25BE-%25D0%25B0%25D1%2580%25D1%258B%25D0%25BA%25D0%25B8%25D0%25B2-%25D0%25BF%25D0%25BE%25D1%2581%25D0%25BB%25D0%25B5%25D0%25B4%25D0%25BD%25D0%25B5%25D0%25B5-%25D0%25B2%25D1%2580%25D0%25B5%25D0%25BC%25D1%258F-%25D0%25B2-%25D1%2583%25D0%25B7%25D0%25B1%25D0%25B5%25D0%25BA%25D0%25B8%25D1%2581%25D1%2582%25D0%25B0%25D0%25BD%25D0%25B5%25D0%25B0-%25D0%25B8%25D0%25BC%25D0%25B5%25D0%25BD%25D0%25BD%25D0%25BE-%25D0%25B2-%25D1%2582%25D0%25B0%25D1%2588%25D0%25BA%25D0%25B5%25D0%25BD%25D1%2582%25D0%25B5-%25D0%25BF%25D1%2580%25D0%25BE%25D0%25B8%25D1%2581%25D1%2585%25D0%25BE%2F24035433362814437%2F&psig=AOvVaw3O3hhJ-3VGqC5YsqdWRqKB&ust=1763877792913000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLCD9v6KhZEDFQAAAAAdAAAAABAE'
+    imageUrl: 'https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=800&q=80'
+  }
+];
+
+export const ECO_POINTS: EcoPoint[] = [
+  {
+    id: 'ep1',
+    type: EcoPointType.RECYCLING,
+    name: 'Hashar Week Point',
+    description: 'Пункт приема пластика и бумаги.',
+    location: { lat: 41.315, lng: 69.250 },
+    workingHours: '09:00 - 18:00',
+    contact: '+998 90 123 45 67',
+    acceptedItems: ['Пластик (PET)', 'Бумага', 'Стекло']
+  },
+  {
+    id: 'ep2',
+    type: EcoPointType.RECYCLING,
+    name: 'EcoMac',
+    description: 'Прием макулатуры и картона.',
+    location: { lat: 41.285, lng: 69.210 },
+    workingHours: '10:00 - 17:00',
+    contact: '+998 71 200 00 00',
+    acceptedItems: ['Картон', 'Газеты', 'Книги']
+  },
+  {
+    id: 'ep3',
+    type: EcoPointType.VOLUNTEER,
+    name: 'Волонтеры "Чистый Город"',
+    description: 'Частный сбор батареек и электроники.',
+    location: { lat: 41.330, lng: 69.290 },
+    workingHours: 'По звонку',
+    contact: '+998 93 999 88 77',
+    acceptedItems: ['Батарейки', 'Лампочки', 'Старая техника']
+  }
+];
+
+export const GUIDE_CONTENT = [
+  {
+    id: 'sort',
+    icon: 'fa-recycle',
+    titleKey: 'guide.sortTitle',
+    items: [
+      { label: 'Пластик', desc: 'Сполосните бутылки, сомните их. Крышки сдавайте отдельно.' },
+      { label: 'Бумага', desc: 'Очистите от скрепок и скотча. Картон складывайте компактно.' },
+      { label: 'Стекло', desc: 'Только целые бутылки и банки. Битое стекло не принимается.' }
+    ]
+  },
+  {
+    id: 'forbidden',
+    icon: 'fa-ban',
+    titleKey: 'guide.forbiddenTitle',
+    items: [
+      { label: 'Опасные отходы', desc: 'Ртутные градусники, лампы (сдавать в спец. пункты).' },
+      { label: 'Грязная упаковка', desc: 'Упаковка от жирной еды (коробки от пиццы) не перерабатывается.' }
+    ]
+  },
+  {
+    id: 'contacts',
+    icon: 'fa-phone',
+    titleKey: 'guide.contactsTitle',
+    items: [
+      { label: 'Эко-патруль', desc: '102 или +998 71 200-00-00' },
+      { label: 'Вывоз мусора (Махсустранс)', desc: '+998 71 247-02-11' }
+    ]
   }
 ];
 
@@ -61,4 +126,13 @@ export const CATEGORY_ICONS: Record<PollutionCategory, string> = {
   [PollutionCategory.NOISE]: 'fa-volume-up',
   [PollutionCategory.CONSTRUCTION]: 'fa-truck',
   [PollutionCategory.OTHER]: 'fa-exclamation-triangle',
+};
+
+export const CATEGORY_IMAGES: Record<PollutionCategory, string> = {
+  [PollutionCategory.TRASH]: 'https://images.unsplash.com/photo-1605600659908-0ef719419d41?auto=format&fit=crop&w=800&q=80',
+  [PollutionCategory.AIR]: 'https://images.unsplash.com/photo-1565897192084-150d7e784636?auto=format&fit=crop&w=800&q=80',
+  [PollutionCategory.WATER]: 'https://images.unsplash.com/photo-1572432960362-eb83901501c0?auto=format&fit=crop&w=800&q=80',
+  [PollutionCategory.NOISE]: 'https://images.unsplash.com/photo-1484504390176-61b456590938?auto=format&fit=crop&w=800&q=80',
+  [PollutionCategory.CONSTRUCTION]: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80',
+  [PollutionCategory.OTHER]: 'https://images.unsplash.com/photo-1611273426761-53c8577a20fa?auto=format&fit=crop&w=800&q=80',
 };
