@@ -19,7 +19,7 @@ export const INITIAL_REPORTS: Report[] = [
     timestamp: Date.now() - 86400000 * 2, // 2 days ago
     status: ReportStatus.NEW,
     likes: 15,
-    imageUrl: 'https://picsum.photos/id/1/800/600'
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ05NliFzM-Yhh5KM6goEMgA4NGGws4PN0vw&s'
   },
   {
     id: 'r2',
@@ -30,7 +30,7 @@ export const INITIAL_REPORTS: Report[] = [
     timestamp: Date.now() - 3600000 * 5, // 5 hours ago
     status: ReportStatus.VERIFIED,
     likes: 42,
-    imageUrl: 'https://picsum.photos/id/2/800/600'
+    imageUrl: 'https://upl.uz/uploads/posts/2021-11/1636051172_taha.jpg'
   },
   {
     id: 'r3',
@@ -41,7 +41,7 @@ export const INITIAL_REPORTS: Report[] = [
     timestamp: Date.now() - 86400000 * 5,
     status: ReportStatus.IN_PROGRESS,
     likes: 8,
-    imageUrl: 'https://picsum.photos/id/3/800/600'
+    imageUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2Fnikita.lemeshko.2025%2Fposts%2F%25D1%2583%25D0%25B7%25D0%25B1%25D0%25B5%25D0%25BA%25D0%25B8%25D1%2581%25D1%2582%25D0%25B0%25D0%25BD-%25D0%25B8-%25D0%25B5%25D0%25B3%25D0%25BE-%25D0%25B0%25D1%2580%25D1%258B%25D0%25BA%25D0%25B8%25D0%25B2-%25D0%25BF%25D0%25BE%25D1%2581%25D0%25BB%25D0%25B5%25D0%25B4%25D0%25BD%25D0%25B5%25D0%25B5-%25D0%25B2%25D1%2580%25D0%25B5%25D0%25BC%25D1%258F-%25D0%25B2-%25D1%2583%25D0%25B7%25D0%25B1%25D0%25B5%25D0%25BA%25D0%25B8%25D1%2581%25D1%2582%25D0%25B0%25D0%25BD%25D0%25B5%25D0%25B0-%25D0%25B8%25D0%25BC%25D0%25B5%25D0%25BD%25D0%25BD%25D0%25BE-%25D0%25B2-%25D1%2582%25D0%25B0%25D1%2588%25D0%25BA%25D0%25B5%25D0%25BD%25D1%2582%25D0%25B5-%25D0%25BF%25D1%2580%25D0%25BE%25D0%25B8%25D1%2581%25D1%2585%25D0%25BE%2F24035433362814437%2F&psig=AOvVaw3O3hhJ-3VGqC5YsqdWRqKB&ust=1763877792913000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLCD9v6KhZEDFQAAAAAdAAAAABAE'
   }
 ];
 
