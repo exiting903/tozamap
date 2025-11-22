@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { PollutionCategory } from '../types';
 import { CATEGORY_ICONS } from '../constants';
@@ -14,9 +15,11 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onCancel, onSubmit, t })
   const [description, setDescription] = useState('');
   const [coords, setCoords] = useState<{lat: number, lng: number} | null>(null);
   const [isLoadingMap, setIsLoadingMap] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<any>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Init map when entering step 2
   useEffect(() => {
@@ -66,7 +69,6 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onCancel, onSubmit, t })
             },
             (error) => {
                 console.warn("Geo error", error);
-                // Just stay at default or previous coords
                 setCoords({ lat: defaultLat, lng: defaultLng });
                 setIsLoadingMap(false);
             },
@@ -91,6 +93,17 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onCancel, onSubmit, t })
       setStep(2);
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = () => {
     if (!selectedCategory || !coords) return;
     
@@ -101,7 +114,8 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onCancel, onSubmit, t })
           lat: coords.lat, 
           lng: coords.lng,
           addressName: `${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)}`
-      }
+      },
+      image: imagePreview // Pass the uploaded image
     });
   };
 
@@ -170,27 +184,40 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onCancel, onSubmit, t })
                         <i className={`fa-solid ${isLoadingMap ? 'fa-circle-notch fa-spin' : 'fa-location-crosshairs'}`}></i>
                      </button>
                 </div>
-
-                {/* Hint Overlay */}
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full shadow-sm z-10 whitespace-nowrap">
-                    <span className="text-xs font-medium text-slate-600">
-                        {t.form.step2Desc || "Move map to pinpoint location"}
-                    </span>
-                </div>
              </div>
 
              {/* Form Section */}
              <div className="flex-1 bg-white p-6 rounded-t-3xl -mt-6 relative z-20 shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.1)]">
                  <div className="mx-auto w-12 h-1 bg-slate-200 rounded-full mb-6"></div>
                  
-                 <div className="mb-4">
-                     <div className="flex items-center gap-2 text-slate-400 text-xs uppercase font-bold tracking-wider mb-2">
-                        <i className="fa-solid fa-map-pin"></i>
-                        Coordinates
-                     </div>
-                     <div className="font-mono text-sm bg-slate-50 p-2 rounded border border-slate-100 text-slate-600">
-                        {coords ? `${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}` : '...'}
-                     </div>
+                 {/* Image Upload Field */}
+                 <div className="mb-6">
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Фотография</label>
+                    <div 
+                      onClick={() => fileInputRef.current?.click()}
+                      className="w-full h-32 rounded-xl border-2 border-dashed border-slate-300 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-50 hover:border-emerald-400 transition relative overflow-hidden bg-slate-50"
+                    >
+                        {imagePreview ? (
+                            <>
+                                <img src={imagePreview} alt="Preview" className="w-full h-full object-cover opacity-80" />
+                                <div className="absolute inset-0 flex items-center justify-center bg-black/30 text-white font-medium opacity-0 hover:opacity-100 transition-opacity">
+                                    <i className="fa-solid fa-pen mr-2"></i> {t.form.changePhoto}
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <i className="fa-solid fa-camera text-3xl text-slate-400 mb-2"></i>
+                                <span className="text-slate-500 text-sm font-medium">{t.form.addPhoto}</span>
+                            </>
+                        )}
+                    </div>
+                    <input 
+                        ref={fileInputRef}
+                        type="file" 
+                        accept="image/*" 
+                        className="hidden" 
+                        onChange={handleImageChange}
+                    />
                  </div>
 
                  <div className="mb-6">
@@ -199,7 +226,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onCancel, onSubmit, t })
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder={t.form.placeholderDesc}
-                        className="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:border-emerald-500 focus:outline-none h-32 resize-none"
+                        className="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-xl focus:border-emerald-500 focus:outline-none h-24 resize-none"
                      ></textarea>
                  </div>
 
