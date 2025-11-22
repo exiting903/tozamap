@@ -117,3 +117,4 @@ export const Profile: React.FC<ProfileProps> = ({ user, reportCount, language, o
     </div>
   );
 };
+
