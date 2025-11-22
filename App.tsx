@@ -7,7 +7,8 @@ import { Profile } from './components/Profile';
 import { ReportDetails } from './components/ReportDetails';
 import { Auth } from './components/Auth';
 import { Toast } from './components/Toast';
-import { INITIAL_REPORTS } from './constants';
+import { EcoGuide } from './components/EcoGuide';
+import { INITIAL_REPORTS, CATEGORY_IMAGES } from './constants';
 import { translations } from './translations';
 import { Report, ViewState, PollutionCategory, ReportStatus, User, Language } from './types';
 
@@ -33,7 +34,7 @@ const App: React.FC = () => {
 
   const handleLogout = () => {
     setUser(null);
-    setView('AUTH'); // Conceptually, though handleLogin will just re-render Auth
+    setView('AUTH'); 
   };
 
   const handleNavigate = (newView: ViewState) => {
@@ -48,19 +49,24 @@ const App: React.FC = () => {
     setView('REPORT_DETAILS');
   };
 
-  const handleAddSubmit = (data: Partial<Report>) => {
+  const handleAddSubmit = (data: any) => {
     if (!user) return;
+
+    const category = data.category as PollutionCategory;
+    
+    // Use uploaded image or fallback to specific category stock image
+    const finalImageUrl = data.image || CATEGORY_IMAGES[category];
 
     const newReport: Report = {
       id: `r${Date.now()}`,
       userId: user.id,
-      category: data.category as PollutionCategory,
+      category: category,
       description: data.description || '',
       location: data.location || { lat: 0, lng: 0 },
       timestamp: Date.now(),
       status: ReportStatus.NEW,
       likes: 0,
-      imageUrl: `https://picsum.photos/seed/${Date.now()}/800/600`, 
+      imageUrl: finalImageUrl,
     };
 
     setReports(prev => [newReport, ...prev]);
@@ -150,14 +156,18 @@ const App: React.FC = () => {
           />
         )}
         
+        {view === 'GUIDE' && (
+          <EcoGuide t={t} />
+        )}
+
         {view === 'PROFILE' && (
           <Profile 
             user={user} 
             reportCount={userReportCount}
             language={language}
             onToggleLanguage={toggleLanguage}
-            t={t}
             onLogout={handleLogout}
+            t={t}
           />
         )}
       </div>
@@ -191,3 +201,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+
