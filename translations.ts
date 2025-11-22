@@ -3,8 +3,18 @@ import { PollutionCategory, ReportStatus } from "./types";
 
 export const translations = {
   ru: {
-    nav: { map: 'Карта', add: 'Добавить', profile: 'Профиль' },
+    nav: { map: 'Карта', add: 'Добавить', profile: 'Профиль', guide: 'Эко-Гид' },
     map: { all: 'Все', locate: 'Моя локация' },
+    guide: {
+        title: 'Эко-Справочник',
+        subtitle: 'Правила сортировки и полезные контакты',
+        sortTitle: 'Как сортировать',
+        forbiddenTitle: 'Не принимают',
+        contactsTitle: 'Службы и контакты',
+        workingHours: 'Режим работы',
+        phone: 'Телефон',
+        accepts: 'Принимает'
+    },
     auth: {
       title: 'Добро пожаловать',
       subtitle: 'Создайте аккаунт, чтобы сделать город чище',
@@ -21,11 +31,13 @@ export const translations = {
       step1Title: 'Что случилось?',
       step1Desc: 'Выберите категорию загрязнения',
       step2Title: 'Где это?',
-      step2Desc: 'Определяем ваше местоположение...',
+      step2Desc: 'Добавьте фото и проверьте адрес',
       locationFound: 'Локация определена',
       placeholderDesc: 'Опишите проблему подробнее...',
       submit: 'Отправить отчет',
-      cancel: 'Отмена'
+      cancel: 'Отмена',
+      addPhoto: 'Добавить фото',
+      changePhoto: 'Изменить фото'
     },
     details: {
       resolved: 'Решено',
@@ -76,8 +88,18 @@ export const translations = {
     }
   },
   uz: {
-    nav: { map: 'Xarita', add: "Qo'shish", profile: 'Profil' },
+    nav: { map: 'Xarita', add: "Qo'shish", profile: 'Profil', guide: "Qo'llanma" },
     map: { all: 'Barchasi', locate: 'Joylashuvim' },
+    guide: {
+        title: "Eko-Qo'llanma",
+        subtitle: 'Saralash qoidalari va foydali aloqalar',
+        sortTitle: 'Qanday saralash kerak',
+        forbiddenTitle: 'Qabul qilinmaydi',
+        contactsTitle: 'Xizmatlar va aloqalar',
+        workingHours: 'Ish vaqti',
+        phone: 'Telefon',
+        accepts: 'Qabul qiladi'
+    },
     auth: {
       title: 'Xush kelibsiz',
       subtitle: 'Shaharni tozalash uchun hisob yarating',
@@ -94,11 +116,13 @@ export const translations = {
       step1Title: 'Nima sodir bo\'ldi?',
       step1Desc: 'Ifloslanish toifasini tanlang',
       step2Title: 'Bu qayerda?',
-      step2Desc: 'Joylashuvingiz aniqlanmoqda...',
+      step2Desc: 'Rasm yuklang va manzilni tekshiring',
       locationFound: 'Joylashuv aniqlandi',
       placeholderDesc: 'Muammoni batafsil tavsiflang...',
       submit: 'Yuborish',
-      cancel: 'Bekor qilish'
+      cancel: 'Bekor qilish',
+      addPhoto: 'Rasm qo\'shish',
+      changePhoto: 'Rasmni o\'zgartirish'
     },
     details: {
       resolved: 'Hal qilindi',
@@ -149,8 +173,18 @@ export const translations = {
     }
   },
   en: {
-    nav: { map: 'Map', add: 'Add', profile: 'Profile' },
+    nav: { map: 'Map', add: 'Add', profile: 'Profile', guide: 'Guide' },
     map: { all: 'All', locate: 'My Location' },
+    guide: {
+        title: 'Eco-Guide',
+        subtitle: 'Sorting rules and useful contacts',
+        sortTitle: 'How to Sort',
+        forbiddenTitle: 'Not Accepted',
+        contactsTitle: 'Services & Contacts',
+        workingHours: 'Working Hours',
+        phone: 'Phone',
+        accepts: 'Accepts'
+    },
     auth: {
       title: 'Welcome',
       subtitle: 'Create an account to clean up the city',
@@ -167,11 +201,13 @@ export const translations = {
       step1Title: 'What happened?',
       step1Desc: 'Select pollution category',
       step2Title: 'Where is it?',
-      step2Desc: 'Locating you...',
+      step2Desc: 'Add a photo and check location',
       locationFound: 'Location found',
       placeholderDesc: 'Describe the issue in detail...',
       submit: 'Submit Report',
-      cancel: 'Cancel'
+      cancel: 'Cancel',
+      addPhoto: 'Add Photo',
+      changePhoto: 'Change Photo'
     },
     details: {
       resolved: 'Resolved',
