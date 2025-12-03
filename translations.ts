@@ -8,7 +8,8 @@ export const translations = {
     guide: {
         title: 'Эко-Справочник',
         subtitle: 'Правила сортировки и полезные контакты',
-        sortTitle: 'Как сортировать',
+        preparationTitle: 'Подготовка',
+        sortTitle: 'Что можно сдавать',
         forbiddenTitle: 'Не принимают',
         contactsTitle: 'Службы и контакты',
         workingHours: 'Режим работы',
@@ -85,6 +86,14 @@ export const translations = {
     toast: {
         added: 'Отчет успешно добавлен! +10 баллов',
         fixed: 'Спасибо за помощь! Начислено +50 баллов.'
+    },
+    aqi: {
+        good: 'Отлично',
+        moderate: 'Нормально',
+        sensitive: 'Вредно для уязвимых',
+        unhealthy: 'Вредно',
+        hazardous: 'Опасно',
+        label: 'AQI Ташкент'
     }
   },
   uz: {
@@ -93,7 +102,8 @@ export const translations = {
     guide: {
         title: "Eko-Qo'llanma",
         subtitle: 'Saralash qoidalari va foydali aloqalar',
-        sortTitle: 'Qanday saralash kerak',
+        preparationTitle: 'Tayyorgarlik',
+        sortTitle: 'Nima topshirish mumkin',
         forbiddenTitle: 'Qabul qilinmaydi',
         contactsTitle: 'Xizmatlar va aloqalar',
         workingHours: 'Ish vaqti',
@@ -170,6 +180,14 @@ export const translations = {
     toast: {
         added: 'Hisobot muvaffaqiyatli qo\'shildi! +10 ball',
         fixed: 'Yordamingiz uchun rahmat! +50 ball berildi.'
+    },
+    aqi: {
+        good: 'A\'lo',
+        moderate: 'O\'rtacha',
+        sensitive: 'Ta\'sirchanlar uchun zararli',
+        unhealthy: 'Zararli',
+        hazardous: 'Xavfli',
+        label: 'Toshkent AQI'
     }
   },
   en: {
@@ -178,7 +196,8 @@ export const translations = {
     guide: {
         title: 'Eco-Guide',
         subtitle: 'Sorting rules and useful contacts',
-        sortTitle: 'How to Sort',
+        preparationTitle: 'Preparation',
+        sortTitle: 'Accepted Items',
         forbiddenTitle: 'Not Accepted',
         contactsTitle: 'Services & Contacts',
         workingHours: 'Working Hours',
@@ -255,6 +274,15 @@ export const translations = {
     toast: {
         added: 'Report successfully added! +10 points',
         fixed: 'Thanks for helping! +50 points awarded.'
+    },
+    aqi: {
+        good: 'Good',
+        moderate: 'Moderate',
+        sensitive: 'Unhealthy for Sensitive',
+        unhealthy: 'Unhealthy',
+        hazardous: 'Hazardous',
+        label: 'Tashkent AQI'
     }
   }
 };
+
