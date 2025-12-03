@@ -67,4 +67,14 @@ export interface EcoPoint {
   acceptedItems?: string[];
 }
 
+export interface AQIData {
+  aqi: number;
+  temperature: number;
+  humidity: number;
+  city: string;
+  icon: string; // Weather icon code (e.g., '01d')
+  timestamp: number;
+}
+
 export type ViewState = 'AUTH' | 'MAP' | 'FEED' | 'ADD' | 'PROFILE' | 'REPORT_DETAILS' | 'GUIDE';
+
