@@ -34,9 +34,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Make sure to add VITE_GEMINI_API_KEY in your GitHub Repo > Settings > Secrets and variables > Actions
           VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
-          API_KEY: ${{ secrets.API_KEY }} # Fallback if you named it API_KEY
+          API_KEY: ${{ secrets.API_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
