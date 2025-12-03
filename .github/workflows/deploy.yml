@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Сборка проекта
+  # Job to build the app
   build:
     runs-on: ubuntu-latest
     steps:
@@ -28,19 +28,22 @@ jobs:
           node-version: "20"
           cache: 'npm'
 
-      # Используем install вместо ci, чтобы не было ошибок без lock-файла
       - name: Install dependencies
         run: npm install
 
       - name: Build
         run: npm run build
+        env:
+          # Make sure to add VITE_GEMINI_API_KEY in your GitHub Repo > Settings > Secrets and variables > Actions
+          VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
+          API_KEY: ${{ secrets.API_KEY }} # Fallback if you named it API_KEY
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-  # Публикация на GitHub Pages
+  # Job to deploy to GitHub Pages
   deploy:
     environment:
       name: github-pages
